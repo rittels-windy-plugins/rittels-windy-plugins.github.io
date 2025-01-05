@@ -8,7 +8,7 @@ const url = (name) =>
 const $ = (e) => document.querySelector(e);
 
 const plugins = [
-    { title: "About", name: "plugins", vis:"public"},
+    { title: "About", name: "rittels-windy-plugins.github.io", vis:"public"},
     { title: "Flight Planner", name: "windy-plugin-fp", vis: "priv" },
     { title: "Trajectory", name: "windy-plugin-traj", vis: "priv" },
     { title: "Density Altitude", name: "windy-plugin-da", vis: "public" },
@@ -33,5 +33,5 @@ plugins.forEach((p) => {
     p.div=div;
 });
 
-plugins[0].click();
+plugins[0].div.click();
 

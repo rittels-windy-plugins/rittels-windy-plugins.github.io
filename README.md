@@ -16,5 +16,4 @@ I also made a custom-picker.  This looks nearly identical to the desktop picker.
 
 In the past I attached stuff directly to the internal windy picker,  but Ivo asked that I <b>NOT</b> do that,  and rather make a clone of the picker,  so that if the DOM is changed,  it does not break this picker.  
 
-More on the custom picker here:   https://rittels-windy-plugins/custom-windy-picker.
-
+More on the custom picker here:   [https://github.com/rittels-windy-plugins/custom-windy-picker](https://github.com/rittels-windy-plugins/custom-windy-picker) .
