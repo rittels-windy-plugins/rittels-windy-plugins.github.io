@@ -9,8 +9,15 @@ body {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    height: 100vh;
+    
     overflow: hidden;
+}
+#main-container{
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
 }
 #menu-icon {
     font-size: 25px;
