@@ -1,6 +1,4 @@
-const {log}=console;
-
-var converter = new showdown.Converter();
+const converter = new showdown.Converter();
 
 const url = (name) =>
     `https://raw.githubusercontent.com/rittels-windy-plugins/${name}/refs/heads/master/README.md`;
@@ -8,7 +6,7 @@ const url = (name) =>
 const $ = (e) => document.querySelector(e);
 
 const plugins = [
-    { title: "About", name: "rittels-windy-plugins.github.io", vis:"public"},
+    { title: "About", name: "rittels-windy-plugins.github.io", vis: "public" },
     { title: "Flight Planner", name: "windy-plugin-fp", vis: "priv" },
     { title: "Trajectory", name: "windy-plugin-traj", vis: "priv" },
     { title: "Density Altitude", name: "windy-plugin-da", vis: "public" },
@@ -23,15 +21,18 @@ plugins.forEach((p) => {
     div.innerHTML = p.title;
     $("#menu").appendChild(div);
     div.onclick = () => {
-        fetch(`https://raw.githubusercontent.com/rittels-windy-plugins/${p.name}${p.vis=="priv"?"-readme":""}/refs/heads/master/README.md`)
+        fetch(`https://raw.githubusercontent.com/rittels-windy-plugins/${p.name}${p.vis == "priv" ? "-readme" : ""}/refs/heads/master/README.md`)
             .then((r) => r.text())
             .then((t) => {
-                $("#contents").innerHTML = converter.makeHtml(t);
-                log(converter.makeHtml(t));
+                $("#scrollable").innerHTML = converter.makeHtml(t);
+                $("#menu").classList.add("hidden");
             });
     };
-    p.div=div;
+    p.div = div;
 });
 
-plugins[0].div.click();
+$("#contents").onclick = () => $("#menu").classList.add("hidden");
 
+$("#menu-icon").addEventListener("click", e => { $("#menu").classList.toggle("hidden"); })
+
+plugins[0].div.click();

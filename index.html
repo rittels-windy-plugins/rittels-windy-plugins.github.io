@@ -4,17 +4,25 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Windy plugins created by rittels</title>
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="styles.css" />
     </head>
 
     <script src=" https://unpkg.com/showdown/dist/showdown.min.js"></script>
     <body>
+        <div id="mobile-title">
+            <div id="menu-icon">&#8801;</div>
+            <h2>Windy Plugins <span style="font-size: 0.65em; color: black">by rittels</span></h2>
+        </div>
         <div id="container">
-            <div id="menu">
-                <h1>Windy Plugins</h1>
-                <h4>by rittels</h4>
+            <div id="menu" class="hidden">
+                <div id="desktop-title">
+                    <h1>Windy Plugins</h1>
+                    <h4>by rittels</h4>
+                </div>
             </div>
-            <div id="contents">contens</div>
+            <div id="contents">
+                <div id="scrollable"></div>
+            </div>
         </div>
     </body>
 
