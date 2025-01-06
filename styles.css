@@ -8,16 +8,13 @@ body {
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    
+    flex-direction: row;
     overflow: hidden;
+    height:100vh;
 }
-#main-container{
-    position:absolute;
-    top:0;
-    bottom:0;
-    left:0;
-    right:0;
+#mobile-title{
+    display:none;
+    white-space: nowrap;
 }
 #menu-icon {
     font-size: 25px;
@@ -25,18 +22,7 @@ body {
     height: 30px;
     cursor: pointer;
 }
-#mobile-title {
-    display: none;
-    white-space: nowrap;
-}
-#container {
-    display: flex;
-    border: 0px solid red;
-    width: 100vw;
-    max-width: 1200px;
-    height: calc(100% - 20px);
-    align-items: flex-start;
-}
+
 #menu {
     background-color: rgb(235, 235, 245);
     color: black;
@@ -63,8 +49,9 @@ body {
         }
     }
 }
-#desktop-title,
+
 #mobile-title {
+    top:0px;
     h1 {
         margin: 0.3em 0;
         color: rgb(130, 3, 0);
@@ -80,6 +67,7 @@ body {
     color: rgb(20, 20, 20);
     line-height: 1.5em;
     overflow: hidden;
+    max-width:1000px;
 
     #scrollable {
         position: relative;
@@ -134,9 +122,10 @@ body {
     }
 }
 
-@media screen and (max-width: 600px) {
-    #container {
-        height: calc(100% - 40px);
+@media screen and (max-width: 800px) {
+    body{
+        overflow-y:scroll;
+        display:block;
     }
     #menu {
         position: absolute;
@@ -155,9 +144,14 @@ body {
     #desktop-title {
         display: none;
     }
+    #title-and-menu{
+        top:0px;
+        position:sticky;
+        z-index:20;
+        background-color:rgba(240,240,240);
+    }
     #mobile-title {
         display: flex;
-
         h2 {
             margin: 5px;
             flex: 1;
@@ -167,9 +161,6 @@ body {
     }
 }
 @media screen and (max-width: 450px) {
-    #container {
-        flex-direction: column;
-    }
     #menu {
         width: calc(100vw - 20px);
         position: relative;
