@@ -5,6 +5,8 @@ const url = (name) =>
 
 const $ = (e) => document.querySelector(e);
 
+let active = 0;
+
 const plugins = [
     { title: "About", name: "rittels-windy-plugins.github.io", vis: "public" },
     { title: "Flight Planner", name: "windy-plugin-fp", vis: "priv" },
@@ -15,12 +17,14 @@ const plugins = [
     { title: "Day-Night", name: "windy-plugin-day-night", vis: "public" },
 ];
 
-plugins.forEach((p) => {
+
+plugins.forEach((p, i) => {
     let div = document.createElement("div");
     div.classList.add("menu-item");
     div.innerHTML = p.title;
     $("#menu").appendChild(div);
     div.onclick = () => {
+        active = i;
         fetch(`https://raw.githubusercontent.com/rittels-windy-plugins/${p.name}${p.vis == "priv" ? "-readme" : ""}/refs/heads/master/README.md`)
             .then((r) => r.text())
             .then((t) => {
@@ -31,8 +35,30 @@ plugins.forEach((p) => {
     p.div = div;
 });
 
+window.onload = () => {
+    let { search } = window.location;
+    if (search) {
+        let searchTitles = plugins.map(({ title }) => title.toLowerCase().replace(" ", "-"))
+        let ix = searchTitles.findIndex(t => t == search.slice(1));
+        if (ix != -1) {
+            plugins[ix].div.click();
+        }
+    }
+}
+
 $("#contents").onclick = () => $("#menu").classList.add("hidden");
 
 $("#menu-icon").addEventListener("click", e => { $("#menu").classList.toggle("hidden"); })
+
+document.body.onscroll = e => {
+    let d = $("#title-2");
+    if (e.target.scrollingElement.scrollTop > 80) {
+        d.innerHTML = plugins[active].title;
+        d.style.color = "red";
+    } else {
+        d.innerHTML = "by rittels";
+        d.style.color = "black";
+    }
+}
 
 plugins[0].div.click();

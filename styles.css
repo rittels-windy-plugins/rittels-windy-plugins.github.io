@@ -10,10 +10,15 @@ body {
     justify-content: center;
     flex-direction: row;
     overflow: hidden;
-    height:100vh;
+    height: 100vh;
 }
-#mobile-title{
-    display:none;
+#desktop-title {
+    h1 {
+        color: rgb(130, 3, 0);
+    }
+}
+#mobile-title {
+    display: none;
     white-space: nowrap;
 }
 #menu-icon {
@@ -22,7 +27,6 @@ body {
     height: 30px;
     cursor: pointer;
 }
-
 #menu {
     background-color: rgb(235, 235, 245);
     color: black;
@@ -34,7 +38,10 @@ body {
     align-self: auto;
     max-height: 400px;
     padding-top: 1em;
-    transition: max-height 0.5s, padding 0.5s, margin 0.5s;
+    transition:
+        max-height 0.5s,
+        padding 0.5s,
+        margin 0.5s;
 
     > * {
         white-space: nowrap;
@@ -51,10 +58,14 @@ body {
 }
 
 #mobile-title {
-    top:0px;
+    top: 0px;
     h1 {
         margin: 0.3em 0;
         color: rgb(130, 3, 0);
+    }
+    #title-2 {
+        font-size: 0.65em;
+        color: black;
     }
 }
 
@@ -67,7 +78,7 @@ body {
     color: rgb(20, 20, 20);
     line-height: 1.5em;
     overflow: hidden;
-    max-width:1000px;
+    max-width: 1000px;
 
     #scrollable {
         position: relative;
@@ -123,9 +134,9 @@ body {
 }
 
 @media screen and (max-width: 800px) {
-    body{
-        overflow-y:scroll;
-        display:initial;
+    body {
+        overflow-y: scroll;
+        display: initial;
     }
     #menu {
         position: absolute;
@@ -144,11 +155,11 @@ body {
     #desktop-title {
         display: none;
     }
-    #title-and-menu{
-        top:0px;
-        position:sticky;
-        z-index:20;
-        background-color:rgba(240,240,240);
+    #title-and-menu {
+        top: 0px;
+        position: sticky;
+        z-index: 20;
+        background-color: rgba(240, 240, 240);
     }
     #mobile-title {
         display: flex;

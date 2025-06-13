@@ -12,8 +12,8 @@ Closing the `embed box` or `small box`,  closes the plugin completely,  and remo
 
 You can open a number of embedded plugins,  though it is advisable not to open more than 2 or 3,  else the screen becomes cluttered.   
 
-I also made a custom-picker.  This looks nearly identical to the desktop picker.  It has a slightly squarer buttons,  to differentiate it from the internal windy picker.  With the custom picker,  I can add info to the picker and use it to plot waypoints for instance.  
+I also made a custom-picker.  This looks nearly identical to the desktop picker.  It has a slightly squarer buttons,  to differentiate it from the internal windy picker.  With the custom picker,  info and buttons can be added to the picker.  
 
-In the past I attached stuff directly to the internal windy picker,  but Ivo asked that I <b>NOT</b> do that,  and rather make a clone of the picker,  so that if the DOM is changed,  it does not break this picker.  
+In the past I attached stuff directly to the internal windy picker,  but Ivo asked that I <b>NOT</b> do that,  and rather make a clone of the picker,  so that when the DOM is changed,  it does not break this picker.  
 
 More on the custom picker here:   [https://github.com/rittels-windy-plugins/custom-windy-picker](https://github.com/rittels-windy-plugins/custom-windy-picker) .
