@@ -8,13 +8,13 @@ const $ = (e) => document.querySelector(e);
 let active = 0;
 
 const plugins = [
-    { title: "About", name: "rittels-windy-plugins.github.io", vis: "public" },
-    { title: "Flight Planner", name: "windy-plugin-fp", vis: "priv" },
-    { title: "Trajectory", name: "windy-plugin-traj", vis: "priv" },
-    { title: "Density Altitude", name: "windy-plugin-da", vis: "public" },
-    { title: "Airspaces", name: "windy-plugin-airspaces", vis: "public" },
-    { title: "Rings", name: "windy-plugin-rings", vis: "public" },
-    { title: "Day-Night", name: "windy-plugin-day-night", vis: "public" },
+    { title: "About", name: "rittels-windy-plugins.github.io", vis: "public", router: '' },
+    { title: "Flight Planner", name: "windy-plugin-fp", vis: "priv", router: 'flight-planner' },
+    { title: "Trajectory", name: "windy-plugin-traj", vis: "priv", router: 'traj' },
+    { title: "Density Altitude", name: "windy-plugin-da", vis: "public", router: 'density-alt' },
+    { title: "Airspaces", name: "windy-plugin-airspaces", vis: "public", router: 'airspaces' },
+    { title: "Rings", name: "windy-plugin-rings", vis: "public", router: 'rings' },
+    { title: "Day-Night", name: "windy-plugin-day-night", vis: "public", router: 'day-night' },
 ];
 
 
@@ -37,13 +37,11 @@ plugins.forEach((p, i) => {
 
 window.onload = () => {
     let { search } = window.location;
-    if (search) {
-        let searchTitles = plugins.map(({ title }) => title.toLowerCase().replace(" ", "-"))
-        let ix = searchTitles.findIndex(t => t == search.slice(1));
-        if (ix != -1) {
-            plugins[ix].div.click();
-        }
-    }
+    if (!search) return;
+    let paths = plugins.map(({ router }) => router);
+    console.log(paths);
+    let ix = paths.findIndex(t => t == search.slice(1));
+    if (ix != -1) plugins[ix].div.click();
 }
 
 $("#contents").onclick = () => $("#menu").classList.add("hidden");
@@ -54,7 +52,7 @@ document.body.onscroll = e => {
     let d = $("#title-2");
     if (e.target.scrollingElement.scrollTop > 80) {
         d.innerHTML = plugins[active].title;
-        d.style.color = "red";
+        d.style.color = "rgb(40,40,40)";
     } else {
         d.innerHTML = "by rittels";
         d.style.color = "black";
