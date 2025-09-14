@@ -41,7 +41,7 @@ window.onload = () => {
     let paths = plugins.map(({ router }) => router);
     console.log(paths);
     let ix = paths.findIndex(t => t == search.slice(1));
-    if (ix != -1) plugins[ix].div.click();
+    if (ix != -1) setTimeout(plugins[ix].div.click,100);
 }
 
 $("#contents").onclick = () => $("#menu").classList.add("hidden");
