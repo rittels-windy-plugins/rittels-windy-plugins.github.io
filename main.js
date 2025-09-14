@@ -52,34 +52,34 @@ const plugins = [
     },
 ];
 
+function show(router) {
+    let p = plugins.find((plugin) => plugin.router == router);
+    if (!p) p = plugins[0];
+    fetch(
+        `https://raw.githubusercontent.com/rittels-windy-plugins/${p.name}${p.vis == "priv" ? "-readme" : ""}/refs/heads/master/README.md`
+    )
+        .then((r) => r.text())
+        .then((t) => {
+            $("#scrollable").innerHTML = converter.makeHtml(t);
+            $("#menu").classList.add("hidden");
+        });
+}
+
 plugins.forEach((p, i) => {
     let div = document.createElement("div");
     div.classList.add("menu-item");
     div.innerHTML = p.title;
     $("#menu").appendChild(div);
-    div.onclick = () => {
-        active = i;
-        fetch(
-            `https://raw.githubusercontent.com/rittels-windy-plugins/${p.name}${p.vis == "priv" ? "-readme" : ""}/refs/heads/master/README.md`
-        )
-            .then((r) => r.text())
-            .then((t) => {
-                $("#scrollable").innerHTML = converter.makeHtml(t);
-                $("#menu").classList.add("hidden");
-            });
-    };
-    p.div = div;
+    div.addEventListener("click", () => {
+        show(p.router);
+        window.history.pushState({}, "", i == 0 ? "/" : "/?" + p.router);
+    });
 });
 
 window.onload = () => {
-    setTimeout(() => {
-        let { search } = window.location;
-        if (!search) return;
-        let paths = plugins.map(({ router }) => router);
-        console.log(paths);
-        let ix = paths.findIndex((t) => t == search.slice(1));
-        if (ix != -1) plugins[ix].div.click();
-    }, 100);
+    let { search } = window.location;
+    if (!search) show(plugins[0].router);
+    else show(search.slice(1));
 };
 
 $("#contents").onclick = () => $("#menu").classList.add("hidden");
@@ -98,5 +98,3 @@ document.body.onscroll = (e) => {
         d.style.color = "black";
     }
 };
-
-plugins[0].div.click();
