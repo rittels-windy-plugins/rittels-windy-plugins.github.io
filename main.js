@@ -27,10 +27,10 @@ const plugins = [
         router: "traj",
     },
     {
-        title: "Density Altitude",
+        title: "Multipicker",
         name: "windy-plugin-da",
         vis: "public",
-        router: "density-alt",
+        router: "multipicker",
     },
     {
         title: "Airspaces",
