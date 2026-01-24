@@ -55,8 +55,9 @@ const plugins = [
 function show(router) {
     let p = plugins.find((plugin) => plugin.router == router);
     if (!p) p = plugins[0];
+    active = plugins.indexOf(p);
     fetch(
-        `https://raw.githubusercontent.com/rittels-windy-plugins/${p.name}${p.vis == "priv" ? "-readme" : ""}/refs/heads/master/README.md`
+        `https://raw.githubusercontent.com/rittels-windy-plugins/${p.name}${p.vis == "priv" ? "-readme" : ""}/refs/heads/master/README.md`,
     )
         .then((r) => r.text())
         .then((t) => {
@@ -66,11 +67,11 @@ function show(router) {
 }
 
 plugins.forEach((p, i) => {
-    let div = document.createElement("div");
-    div.classList.add("menu-item");
-    div.innerHTML = p.title;
-    $("#menu").appendChild(div);
-    div.addEventListener("click", () => {
+    let btn = document.createElement("button");
+    btn.classList.add("menu-item");
+    btn.innerHTML = p.title;
+    $("#menu").appendChild(btn);
+    btn.addEventListener("click", () => {
         show(p.router);
         window.history.pushState({}, "", i == 0 ? "/" : "/?" + p.router);
     });

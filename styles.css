@@ -1,99 +1,113 @@
 * {
     box-sizing: border-box;
 }
+
 body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-    display: flex;
+    margin         : 0;
+    padding        : 0;
+    box-sizing     : border-box;
+    font-family    : Arial, sans-serif;
+    display        : flex;
     justify-content: center;
-    flex-direction: row;
-    overflow: hidden;
-    height: 100vh;
+    flex-direction : row;
+    overflow       : hidden;
+    height         : 100vh;
 }
+
 #desktop-title {
     h1 {
         color: rgb(130, 3, 0);
     }
 }
+
 #mobile-title {
-    display: none;
+    display    : none;
     white-space: nowrap;
 }
+
 #menu-icon {
     font-size: 25px;
-    padding: 5px;
-    height: 30px;
-    cursor: pointer;
+    padding  : 5px;
+    height   : 30px;
+    cursor   : pointer;
 }
+
 #menu {
     background-color: rgb(235, 235, 245);
-    color: black;
-    padding: 1em;
-    margin: 10px;
+    color           : black;
+    padding         : 1em;
+    margin          : 10px;
 
-    border: 1px solid rgb(200, 200, 200);
+    border       : 1px solid rgb(200, 200, 200);
     border-radius: 15px;
-    align-self: auto;
-    max-height: 400px;
-    padding-top: 1em;
-    transition:
+    align-self   : auto;
+    max-height   : 400px;
+    padding-top  : 1em;
+    transition   :
         max-height 0.5s,
         padding 0.5s,
         margin 0.5s;
 
-    > * {
+    >* {
         white-space: nowrap;
     }
+
     .menu-item {
-        margin: 10px 5px;
-        cursor: pointer;
-        position: relative;
+        margin          : 10px 5px;
+        cursor          : pointer;
+        position        : relative;
+        display         : block;
+        background-color: transparent;
+        border          : 0;
+        font-size       : 1em;
+
         &:hover {
             left: 2px;
-            top: 2px;
+            top : 2px;
         }
     }
 }
 
 #mobile-title {
     top: 0px;
+
     h1 {
         margin: 0.3em 0;
-        color: rgb(130, 3, 0);
+        color : rgb(130, 3, 0);
     }
+
     #title-2 {
         font-size: 0.65em;
-        color: black;
+        color    : black;
     }
 }
 
 #contents {
-    align-self: stretch;
-    flex: 1;
-    border: 1px solid rgb(200, 200, 200);
-    margin: 10px;
+    align-self   : stretch;
+    flex         : 1;
+    border       : 1px solid rgb(200, 200, 200);
+    margin       : 10px;
     border-radius: 15px;
-    color: rgb(20, 20, 20);
-    line-height: 1.5em;
-    overflow: hidden;
-    max-width: 1000px;
+    color        : rgb(20, 20, 20);
+    line-height  : 1.5em;
+    overflow     : hidden;
+    max-width    : 1000px;
 
     #scrollable {
-        position: relative;
-        height: 100%;
-        width: 100%;
-        padding: 20px;
+        position   : relative;
+        height     : 100%;
+        width      : 100%;
+        padding    : 20px;
         padding-top: 0px;
-        overflow-y: scroll;
+        overflow-y : scroll;
+
         &::-webkit-scrollbar {
-            width: 6px;
+            width : 6px;
             height: 6px;
         }
 
         &::-webkit-scrollbar-thumb {
-            background: rgb(235, 235, 245);
+            background   : rgb(235, 235, 245);
             border-radius: 1em;
         }
 
@@ -101,34 +115,39 @@ body {
             background: 0 0;
         }
     }
+
     h1 {
-        padding-bottom: 10px;
-        padding-top: 20px;
-        margin-top: 0px;
-        border-bottom: 1px solid rgba(128, 128, 128, 1);
-        color: rgb(130, 3, 0);
-        position: sticky;
-        top: 0px;
+        padding-bottom  : 10px;
+        padding-top     : 20px;
+        margin-top      : 0px;
+        border-bottom   : 1px solid rgba(128, 128, 128, 1);
+        color           : rgb(130, 3, 0);
+        position        : sticky;
+        top             : 0px;
         background-color: white;
-        line-height: 1;
+        line-height     : 1;
     }
+
     #title {
         position: sticky;
     }
+
     code {
-        color: rgb(130, 3, 0);
+        color           : rgb(130, 3, 0);
         background-color: rgba(230, 230, 230);
-        font-size: 1.25em;
-        border-radius: 0.2em;
+        font-size       : 1.25em;
+        border-radius   : 0.2em;
     }
+
     pre {
         background-color: rgba(220, 220, 220);
-        border-radius: 0.5em;
-        padding: 5px;
+        border-radius   : 0.5em;
+        padding         : 5px;
+
         code {
-            color: black;
+            color           : black;
             background-color: transparent;
-            font-size: 1em;
+            font-size       : 1em;
         }
     }
 }
@@ -136,47 +155,55 @@ body {
 @media screen and (max-width: 800px) {
     body {
         overflow-y: scroll;
-        display: initial;
+        display   : initial;
     }
+
     #menu {
         position: absolute;
-        z-index: 10;
+        z-index : 10;
         overflow: hidden;
+
         &.hidden {
-            padding-top: 0;
-            padding-bottom: 0;
-            margin-bottom: 0;
-            margin-top: 0;
-            border-top-width: 0;
+            padding-top        : 0;
+            padding-bottom     : 0;
+            margin-bottom      : 0;
+            margin-top         : 0;
+            border-top-width   : 0;
             border-bottom-width: 0;
-            max-height: 0;
+            max-height         : 0;
         }
     }
+
     #desktop-title {
         display: none;
     }
+
     #title-and-menu {
-        top: 0px;
-        position: sticky;
-        z-index: 20;
+        top             : 0px;
+        position        : sticky;
+        z-index         : 20;
         background-color: rgba(240, 240, 240);
     }
+
     #mobile-title {
         display: flex;
+
         h2 {
-            margin: 5px;
-            flex: 1;
+            margin    : 5px;
+            flex      : 1;
             text-align: center;
-            color: rgb(130, 3, 0);
+            color     : rgb(130, 3, 0);
         }
     }
 }
+
 @media screen and (max-width: 450px) {
     #menu {
-        width: calc(100vw - 20px);
+        width   : calc(100vw - 20px);
         position: relative;
     }
 }
+
 @media screen and (max-width: 300px) {
     body {
         font-size: 0.8em;
